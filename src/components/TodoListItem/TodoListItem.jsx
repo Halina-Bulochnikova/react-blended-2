@@ -16,7 +16,11 @@ const TodoListItem = ({ todo, index, onDelete }) => {
       >
         <RiDeleteBinLine size={24} />
       </button>
-      <button className={style.editButton} type="button">
+      <button
+        className={style.editButton}
+        type="button"
+        onClick={() => handleEditTodo(todo)}
+      >
         <RiEdit2Line size={24} />
       </button>
     </div>

@@ -3,12 +3,11 @@ import { MdOutlineCancel } from 'react-icons/md';
 import style from './EditForm.module.css';
 
 const EditForm = ({ updateTodo, cancelUpdate, defaultValue }) => {
-  const handleSubmit = event => {
-    event.preventDefault();
-    const text = event.target.elements.text.value.trim();
-    if (text) updateTodo(text);
+  const handleSubmit = e => {
+    e.preventDefault();
+    const newText = e.target.elements.text.value.trim();
+    if (newText) updateTodo(newText);
   };
-  
 
   return (
     <form className={style.form} onSubmit={handleSubmit}>
@@ -31,4 +30,5 @@ const EditForm = ({ updateTodo, cancelUpdate, defaultValue }) => {
     </form>
   );
 };
+
 export default EditForm;
