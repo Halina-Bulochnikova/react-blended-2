@@ -4,7 +4,7 @@ import Grid from '../Grid/Grid';
 import GridItem from '../GridItem/GridItem';
 
 
-const TodoList = ({ items, onDelete }) => {
+const TodoList = ({ items, onDelete, onEdit }) => {
   return (
     <Grid>
       <div className={style.listBox}>
@@ -14,6 +14,8 @@ const TodoList = ({ items, onDelete }) => {
               todo={todo}
               index={index}
               onDelete={onDelete}
+              onEdit={onEdit}
+              
             />
           </GridItem>
         ))}
