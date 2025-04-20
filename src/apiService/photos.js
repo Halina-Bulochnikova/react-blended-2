@@ -8,7 +8,7 @@ axios.defaults.params = {
   per_page: 15,
 };
 
-export const getPhotos = async (query, page) => {
+export const fetchGetPhotos = async (query, page) => {
   const { data } = await axios.get(
     `https://api.pexels.com/v1/search?query=${query}&page=${page}`
   );

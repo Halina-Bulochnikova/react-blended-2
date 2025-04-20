@@ -1,9 +1,14 @@
-import Text from '../components/Text/Text';
+import Form from '../components/Form/Form';
 
 const Photos = () => {
+
+  const getQuery = inputValue => {
+    console.log(inputValue);
+  };
+
   return (
     <>
-      <Text textAlign="center">Let`s begin search 🔎</Text>
+      <Form onSubmit={getQuery} />
     </>
   );
 };

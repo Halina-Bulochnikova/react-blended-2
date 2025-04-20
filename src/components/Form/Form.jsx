@@ -1,5 +1,5 @@
 import { FiSearch } from 'react-icons/fi';
-import style from './Form.module.css';
+import css from './Form.module.css';
 
 
 const Form = ({ onSubmit }) => {
@@ -12,13 +12,13 @@ const inputValue = event.target.elements.search.value.trim();
     }
   };
   return (
-    <form onSubmit={handleSubmit} className={style.form}>
-      <button className={style.button} type="submit">
+    <form onSubmit={handleSubmit} className={css.form}>
+      <button className={css.button} type="submit">
         <FiSearch size="16px" />
       </button>
 
       <input
-        className={style.input}
+        className={css.input}
         placeholder="What do you want to write?"
         name="search"
         required
