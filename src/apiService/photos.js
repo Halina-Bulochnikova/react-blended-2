@@ -15,3 +15,10 @@ export const fetchGetPhotos = async (query, page) => {
 
   return data;
 };
+export const fetchGetPhotosById = async () => {
+  const { data } = await axios.get(
+    `https://api.pexels.com/v1/search?query=${query}&page=${page}`
+  );
+
+  return data;
+}
