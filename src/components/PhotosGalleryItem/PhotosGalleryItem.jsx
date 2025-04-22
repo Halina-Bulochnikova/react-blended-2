@@ -1,10 +1,10 @@
 import css from './PhotosGalleryItem.module.css';
 
 
-const PhotosGalleryItem = ({ src, alt }) => {
+const PhotosGalleryItem = ({ id, src, alt, }) => {
   return (
     <div className={css.cardItem}>
-      <img src={src.large} alt={alt} />
+      <img id={id} src={src.large} alt={alt} />
     </div>
   );
 };

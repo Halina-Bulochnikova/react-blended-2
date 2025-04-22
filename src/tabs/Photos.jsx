@@ -2,10 +2,11 @@ import Form from '../components/Form/Form';
 import PhotosGallery from '../components/PhotosGallery/PhotosGallery';
 import { useState } from 'react';
 
-const Photos = () => {
+
+const Photos = ({ onClick }) => {
   const [query, setQuery] = useState('');
-  
- const getQuery = inputValue => {
+
+  const getQuery = inputValue => {
     setQuery(inputValue);
   };
 
@@ -13,6 +14,7 @@ const Photos = () => {
     <>
       <Form onSubmit={getQuery} />
       <PhotosGallery query={query} />
+      
     </>
   );
 };
