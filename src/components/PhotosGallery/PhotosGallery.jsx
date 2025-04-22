@@ -1,13 +1,11 @@
-import  Grid  from '../Grid/Grid';
-import  GridItem  from '../GridItem/GridItem';
-import css from "./PhotosGallery.module.css";
+import Grid from '../Grid/Grid';
+import GridItem from '../GridItem/GridItem';
+import css from './PhotosGallery.module.css';
 import { useEffect, useState } from 'react';
 import { getPhotos } from '../../apiService/photos';
 import PhotosGalleryItem from '../PhotosGalleryItem/PhotosGalleryItem';
 import Button from '../Button/Button';
 import Loader from '../Loader/Loader';
-
-
 
 const PhotosGallery = ({ query }) => {
   const [images, setImages] = useState([]);
@@ -16,19 +14,13 @@ const PhotosGallery = ({ query }) => {
 
   useEffect(() => {
     if (!query) return;
-    setPage(1);
 
     const getData = async () => {
       setIsLoading(true);
       try {
-        const data = await getPhotos(query, page);
-
-        setImages(prev => {
-          if (page === 1) {
-            return data.photos;
-          }
-          return [...prev, ...data.photos];
-        });
+        const data = await getPhotos(query, 1);
+        setImages(data.photos);
+        setPage(1);
       } catch (error) {
         console.error('Error: за цим пошуком фото не знайдено', error);
       } finally {
@@ -36,18 +28,32 @@ const PhotosGallery = ({ query }) => {
       }
     };
     getData();
-  }, [page, query]);
+  }, [query]);
+
+useEffect(() => {
+  if (page === 1 || !query) return;
+
+  const getMoreData = async () => {
+    setIsLoading(true);
+    try {
+      const data = await getPhotos(query, page);
+      setImages(prev => [...prev, ...data.photos]);
+    } catch (error) {
+      console.error('Error при підвантаженні ще фото', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  getMoreData();
+}, [page, query]);
 
   return (
     <div className={css.photosGallery}>
       <Grid>
         {images.map(photo => (
           <GridItem key={photo.id}>
-            <PhotosGalleryItem
-              id={photo.id}
-              src={photo.src}
-              alt={photo.alt}
-            />
+            <PhotosGalleryItem photo={photo} />
           </GridItem>
         ))}
       </Grid>
@@ -62,5 +68,5 @@ const PhotosGallery = ({ query }) => {
     </div>
   );
 };
-  
+
 export default PhotosGallery;

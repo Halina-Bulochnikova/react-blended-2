@@ -3,7 +3,7 @@ import PhotosGallery from '../components/PhotosGallery/PhotosGallery';
 import { useState } from 'react';
 
 
-const Photos = ({ onClick }) => {
+const Photos = () => {
   const [query, setQuery] = useState('');
 
   const getQuery = inputValue => {
