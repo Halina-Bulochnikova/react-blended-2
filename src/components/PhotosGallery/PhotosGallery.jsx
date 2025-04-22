@@ -63,7 +63,7 @@ useEffect(() => {
         <p className={css.loading}>Підвантажую ваш запит картинок...</p>
       )}
       {images.length > 0 && !isLoading && (
-        <Button onClick={() => setPage(prev => prev + 1)} />
+        <Button onClick={() => setPage(prev => prev + 1)}>Більше фото</Button>
       )}
     </div>
   );
